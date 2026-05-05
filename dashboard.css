@@ -1,0 +1,47 @@
+/* Subway-themed solid color styles */
+:root {
+  --subway-blue: #080a0d;
+  --subway-orange: #3c2716;
+  --dark-bg: #7194db;
+  --card-bg: #84c3d3;
+  --text-primary: #ef6b6b;
+  --text-secondary: #daa324;
+  --accent: #14110e;
+}
+
+.stApp {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+h1, h2, h3 {
+  color: var(--subway-blue) !important;
+}
+
+.stMetric > label {
+  color: var(--text-secondary) !important;
+}
+
+.stMetric > div > div {
+  color: var(--accent) !important;
+  font-size: 3rem !important;
+}
+
+.block-container {
+  padding-top: 2rem;
+  background-color: var(--dark-bg);
+}
+
+.stPlotlyChart {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.stDateInput > div > div > div {
+  background-color: var(--card-bg);
+}
+
+.css-1d391kg {
+  background-color: var(--card-bg);
+}
