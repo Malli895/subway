@@ -19,6 +19,15 @@ Works on any Windows system with Python 3.8+ installed.
 3. pip install -r requirements.txt
 4. streamlit run dashboard.py
 
+## Render Deployment
+This repo is ready to deploy on Render as a Python web service.
+
+1. Push the repo to GitHub or GitLab.
+2. Create a new web service on https://dashboard.render.com/
+3. Use the `render.yaml` file in the repo or set:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `streamlit run dashboard.py --server.port $PORT --server.enableCORS false --server.headless true`
+
 ## Features
 - ML models (RandomForest best) for daily ridership forecast
 - Interactive dashboard with historical viz, single/date-range predictions

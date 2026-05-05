@@ -1,0 +1,11 @@
+services:
+  - type: web_service
+    name: subway-ridership-predictor
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run dashboard.py --server.port $PORT --server.enableCORS false --server.headless true
+    autoDeploy: true
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
