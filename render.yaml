@@ -7,7 +7,7 @@ services:
     buildCommand: |
       apt-get update && apt-get install -y build-essential gcc g++ && \
       pip install --upgrade pip && \
-      pip install -r requirements.txt
+      pip install --only-binary=all -r requirements.txt
     startCommand: streamlit run dashboard.py --server.port $PORT --server.address 0.0.0.0 --server.enableCORS false --server.headless true
     autoDeploy: true
     healthCheckPath: /
