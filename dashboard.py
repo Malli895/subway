@@ -14,7 +14,8 @@ with open('dashboard.css') as f:
 @st.cache_data
 def load_data():
     try:
-        return pd.read_csv('data/raw/subway_ridership.csv')
+        url = 'https://raw.githubusercontent.com/Malli895/subway/main/data/raw/subway_ridership.csv'
+        return pd.read_csv(url)
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return pd.DataFrame()
@@ -22,7 +23,11 @@ def load_data():
 @st.cache_data
 def load_model():
     try:
-        return joblib.load('models/best_ridership_model.pkl')
+        url = 'https://raw.githubusercontent.com/Malli895/subway/main/models/best_ridership_model.pkl'
+        import requests
+        response = requests.get(url)
+        from io import BytesIO
+        return joblib.load(BytesIO(response.content))
     except Exception as e:
         st.error(f"Error loading model: {e}")
         return None

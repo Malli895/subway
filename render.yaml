@@ -1,24 +1,9 @@
 services:
-  - type: web_service
-    name: subway-ridership-predictor
+  - type: web
+    name: subway-dashboard
     env: python
-    runtime: python3.11
-    plan: free
-    buildCommand: |
-      apt-get update && apt-get install -y build-essential gcc g++ && \
-      pip install --upgrade pip && \
-      pip install --only-binary=all -r requirements.txt
-    startCommand: streamlit run dashboard.py --server.port $PORT --server.address 0.0.0.0 --server.enableCORS false --server.headless true
-    autoDeploy: true
-    healthCheckPath: /
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run dashboard.py --server.port $PORT --server.address 0.0.0.0
     envVars:
-      - key: PYTHONUNBUFFERED
-        value: "1"
-      - key: STREAMLIT_SERVER_PORT
-        value: "$PORT"
-      - key: STREAMLIT_SERVER_ADDRESS
-        value: "0.0.0.0"
-      - key: STREAMLIT_SERVER_ENABLE_CORS
-        value: "false"
-      - key: STREAMLIT_SERVER_HEADLESS
-        value: "true"
+      - key: PYTHON_VERSION
+        value: 3.10.12
