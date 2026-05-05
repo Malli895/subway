@@ -13,14 +13,26 @@ with open('dashboard.css') as f:
 
 @st.cache_data
 def load_data():
-    return pd.read_csv('data/raw/subway_ridership.csv')
+    try:
+        return pd.read_csv('data/raw/subway_ridership.csv')
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return pd.DataFrame()
 
 @st.cache_data
 def load_model():
-    return joblib.load('models/best_ridership_model.pkl')
+    try:
+        return joblib.load('models/best_ridership_model.pkl')
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 df = load_data()
 model = load_model()
+
+if df.empty or model is None:
+    st.error("Failed to load required data or model. Please check the files.")
+    st.stop()
 
 st.title("🛤️ Subway Ridership Prediction Dashboard")
 
